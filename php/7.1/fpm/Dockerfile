@@ -7,7 +7,7 @@ LABEL maintainer="nilosoares@gmail.com"
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
 ENV NVM_VERSION=0.33.2
-ENV NODE_VERSION=8.2.1
+ENV NODE_VERSION=8.4.0
 ENV PATH /bin/versions/node/v${NODE_VERSION}/bin/:/bin/versions/node/v${NODE_VERSION}/lib/node_modules/npm/bin/:${PATH}
 
 # Update user permission
@@ -58,3 +58,11 @@ RUN . ~/.nvm/nvm.sh && nvm install ${NODE_VERSION} && nvm alias default ${NODE_V
 
 # Installs Gulp, Python, and Apidoc
 RUN npm install -g gulp node-gyp apidoc
+
+# Create folders and fixs permissions
+RUN mkdir -p /var/www/.composer && \
+    mkdir -p /var/www/.config && \
+    mkdir -p /var/www/.npm && \
+    chown -R www-data:www-data /var/www/.composer && \
+    chown -R www-data:www-data /var/www/.config && \
+    chown -R www-data:www-data /var/www/.npm
