@@ -39,3 +39,8 @@ RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # Installs Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Installs Sami
+RUN curl -O http://get.sensiolabs.org/sami.phar && \
+    mv sami.phar /usr/local/bin/sami && \
+    chmod 755 /usr/local/bin/sami
