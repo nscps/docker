@@ -6,26 +6,33 @@ LABEL maintainer="nilosoares@gmail.com"
 
 # Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
+ENV NVM_VERSION=0.33.2
+ENV NODE_VERSION=8.2.1
+ENV PATH /bin/versions/node/v${NODE_VERSION}/bin/:/bin/versions/node/v${NODE_VERSION}/lib/node_modules/npm/bin/:${PATH}
 
 # Update user permission
 RUN usermod -u 1000 www-data
 
-# Installs dependencies
 RUN apt-get update && apt-get install -y \
     apt-utils \
+    build-essential \
     git \
+    g++ \
+    make \
+    python-software-properties \
+    python \
     unzip \
     vim \
     zip \
 
-    # Dependencies for php-gd
+    # dependencies for php-gd
     libfreetype6-dev \
     libjpeg62-turbo-dev \
 
-    # Dependency for php-mcrypt
+    # dependency for php-mcrypt
     libmcrypt-dev \
 
-    # Dependencies for php-zip and intl
+    # dependencies for php-zip and intl
     zlib1g-dev \
     libicu-dev
 
@@ -44,3 +51,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -O http://get.sensiolabs.org/sami.phar && \
     mv sami.phar /usr/local/bin/sami && \
     chmod 755 /usr/local/bin/sami
+
+# Installs NodeJS
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash
+RUN . ~/.nvm/nvm.sh && nvm install ${NODE_VERSION} && nvm alias default ${NODE_VERSION}
+
+# Installs Gulp, Python, and Apidoc
+RUN npm install -g gulp node-gyp apidoc
