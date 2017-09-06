@@ -63,6 +63,8 @@ RUN npm install -g gulp node-gyp apidoc
 RUN mkdir -p /var/www/.composer && \
     mkdir -p /var/www/.config && \
     mkdir -p /var/www/.npm && \
+    mkdir -p /var/www/.ssh && \
     chown -R www-data:www-data /var/www/.composer && \
     chown -R www-data:www-data /var/www/.config && \
-    chown -R www-data:www-data /var/www/.npm
+    chown -R www-data:www-data /var/www/.npm && \
+    chown -R www-data:www-data /var/www/.ssh
