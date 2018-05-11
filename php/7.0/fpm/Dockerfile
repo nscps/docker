@@ -24,15 +24,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     vim \
     zip \
-
-    # dependencies for php-gd
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-
-    # dependency for php-mcrypt
     libmcrypt-dev \
-
-    # dependencies for php-zip and intl
     zlib1g-dev \
     libicu-dev
 
