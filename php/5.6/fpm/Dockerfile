@@ -24,15 +24,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     vim \
     zip \
-
-    # dependencies for php-gd
     libfreetype6-dev \
     libjpeg62-turbo-dev \
-
-    # dependency for php-mcrypt
     libmcrypt-dev \
-
-    # dependencies for php-zip and intl
     zlib1g-dev \
     libicu-dev
 
@@ -42,7 +36,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-di
     docker-php-ext-install -j$(nproc) gd mcrypt pdo_mysql mysqli zip
 
 # Installs Xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug-2.5.5 && docker-php-ext-enable xdebug
 
 # Installs Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
