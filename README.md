@@ -9,8 +9,8 @@ This repository contains some Docker Images with common libraries installed and 
 - PHP 7.0-fpm
 - PHP 5.6-fpm
 - Nginx 1.13
+- Nginx 1.14
 
 ## Todo
 
-- Nginx 1.12
 - Node
