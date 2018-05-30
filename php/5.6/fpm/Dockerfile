@@ -13,14 +13,13 @@ ENV PATH /bin/versions/node/v${NODE_VERSION}/bin/:/bin/versions/node/v${NODE_VER
 # Update user permission
 RUN usermod -u 1000 www-data
 
+# Update/Install dependencies
 RUN apt-get update && apt-get install -y \
     apt-utils \
     build-essential \
     git \
     g++ \
     make \
-    python-software-properties \
-    python \
     unzip \
     vim \
     zip \
