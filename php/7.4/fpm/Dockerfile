@@ -18,6 +18,7 @@ RUN apt update && apt install -y \
     apt-utils \
     build-essential \
     git \
+    wget \
     unzip \
     vim \
     zip \
@@ -37,8 +38,8 @@ RUN pecl install ds && \
     pecl install xdebug-2.9.5 && \
     docker-php-ext-enable ds xdebug
 
-## Installs Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Installs Composer
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/e3e43bde99447de1c13da5d1027545be81736b27/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
 ## Installs NodeJS
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash
