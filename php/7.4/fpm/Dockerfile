@@ -11,10 +11,8 @@ RUN usermod -u 1000 www-data
 RUN apt update && apt install -y \
     apt-utils \
     build-essential \
-    git \
     wget \
     unzip \
-    vim \
     zip \
     libjpeg-dev \
     libpng-dev \
