@@ -4,12 +4,6 @@ FROM php:7.4-fpm
 # Maintainer
 LABEL maintainer="nilosoares@gmail.com"
 
-# Environment
-ENV DEBIAN_FRONTEND=noninteractive
-ENV NVM_VERSION=0.35.3
-ENV NODE_VERSION=12.16.3
-ENV PATH /bin/versions/node/v${NODE_VERSION}/bin/:/bin/versions/node/v${NODE_VERSION}/lib/node_modules/npm/bin/:${PATH}
-
 ## Update user permission
 RUN usermod -u 1000 www-data
 
@@ -41,16 +35,6 @@ RUN pecl install ds && \
 # Installs Composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/e3e43bde99447de1c13da5d1027545be81736b27/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
-## Installs NodeJS
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash
-RUN . ~/.nvm/nvm.sh && nvm install ${NODE_VERSION} && nvm alias default ${NODE_VERSION}
-
 ## Create folders and fix permissions
 RUN mkdir -p /var/www/.composer && \
-    mkdir -p /var/www/.config && \
-    mkdir -p /var/www/.npm && \
-    mkdir -p /var/www/.ssh && \
-    chown -R www-data:www-data /var/www/.composer && \
-    chown -R www-data:www-data /var/www/.config && \
-    chown -R www-data:www-data /var/www/.npm && \
-    chown -R www-data:www-data /var/www/.ssh
+    chown -R www-data:www-data /var/www/.composer
