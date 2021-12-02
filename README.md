@@ -4,6 +4,8 @@ This repository contains some Docker Images with common libraries installed and 
 
 ## PHP Images
 
+- PHP 8.1-fpm
+- PHP 8.0-fpm
 - PHP 7.4-fpm
 - PHP 7.3-fpm
 - PHP 7.2-fpm
@@ -12,6 +14,7 @@ This repository contains some Docker Images with common libraries installed and 
 - PHP 5.6-fpm
 
 ## Nginx Images
+- Nginx 1.19
 - Nginx 1.18
 - Nginx 1.17
 - Nginx 1.16
@@ -21,6 +24,5 @@ This repository contains some Docker Images with common libraries installed and 
 
 ## Todo
 
-- Apache
 - Jenkins
 - Node
