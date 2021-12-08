@@ -15,25 +15,26 @@ RUN apt update && apt install -y \
     wget \
     unzip \
     zip \
+    libcurl4-openssl-dev \
     libjpeg-dev \
     libpng-dev \
     libfreetype6-dev \
     libicu-dev \
+    libxml2-dev \
     libzip-dev
 
 # Installs PHP Extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure intl && \
-    docker-php-ext-install -j$(nproc) gd intl pdo_mysql mysqli sysvsem zip
+    docker-php-ext-install -j$(nproc) ctype curl gd iconv intl pdo_mysql mysqli session sysvsem xml zip
 
 # Installs PECL Extensions
-RUN pecl install ds && \
-    pecl install xdebug-3.1.2 && \
-    docker-php-ext-enable ds xdebug
+RUN pecl install xdebug-3.1.2 && \
+    docker-php-ext-enable xdebug
 
 # Installs Composer
-RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/e3e43bde99447de1c13da5d1027545be81736b27/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/e3e43bde99447de1c13da5d1027545be81736b27/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Create folders and fix permissions
-RUN mkdir -p /var/www/.composer && \
-    chown -R www-data:www-data /var/www/.composer
+#RUN mkdir -p /var/www/.composer && \
+#    chown -R www-data:www-data /var/www/.composer
