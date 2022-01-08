@@ -29,12 +29,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install -j$(nproc) ctype curl gd iconv intl pdo_mysql mysqli session sysvsem xml zip
 
 # Installs PECL Extensions
-RUN pecl install xdebug-3.1.2 && \
+RUN pecl install ds && \
+    pecl install xdebug-3.1.2 && \
     docker-php-ext-enable xdebug
 
 # Installs Composer
-#RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/e3e43bde99447de1c13da5d1027545be81736b27/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/d4525508b60af43a52f274d70315bfed4d671fd3/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Create folders and fix permissions
-#RUN mkdir -p /var/www/.composer && \
-#    chown -R www-data:www-data /var/www/.composer
+RUN mkdir -p /var/www/.composer && \
+    chown -R www-data:www-data /var/www/.composer
