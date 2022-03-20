@@ -30,7 +30,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 
 # Installs PECL Extensions
 RUN pecl install ds && \
-    pecl install xdebug-3.1.2 && \
+    pecl install xdebug-3.1.3 && \
     docker-php-ext-enable xdebug
 
 # Installs Composer
