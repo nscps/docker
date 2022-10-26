@@ -33,7 +33,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 RUN pecl install ds && \
     pecl install redis && \
     pecl install xdebug-3.1.5 && \
-    docker-php-ext-enable xdebug
+    docker-php-ext-enable redis xdebug
 
 # Installs Composer
 RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/2e4127af2d638693670a33b1a63ee035c20277d7/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
