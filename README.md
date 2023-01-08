@@ -4,6 +4,7 @@ This repository contains some Docker Images with common libraries installed and 
 
 ## PHP Images
 
+- PHP 8.2-fpm
 - PHP 8.1-fpm
 - PHP 8.0-fpm
 - PHP 7.4-fpm
