@@ -26,8 +26,9 @@ RUN apt update && apt install -y \
 # Installs PHP Extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-configure intl && \
+    docker-php-ext-configure exif && \
     docker-php-ext-configure opcache --enable-opcache && \
-    docker-php-ext-install -j$(nproc) ctype curl gd iconv intl pdo_mysql mysqli opcache session sysvsem xml zip
+    docker-php-ext-install -j$(nproc) ctype curl gd iconv intl exif pdo_mysql mysqli opcache session sysvsem xml zip
 
 # Installs PECL Extensions
 RUN pecl install ds && \
