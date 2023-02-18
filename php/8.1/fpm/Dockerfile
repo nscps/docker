@@ -36,7 +36,7 @@ RUN pecl install ds && \
     docker-php-ext-enable redis xdebug
 
 # Installs Composer
-RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/2e4127af2d638693670a33b1a63ee035c20277d7/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/be31d0a5e5e835063c29bb45804bd94eefd4cf34/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Create folders and fix permissions
 RUN mkdir -p /var/www/.composer && \
