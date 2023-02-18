@@ -1,5 +1,5 @@
 # Base image
-FROM php:8.1.11-fpm
+FROM php:8.1.16-fpm
 
 # Maintainer
 LABEL maintainer="nilosoares@gmail.com"
