@@ -1,5 +1,5 @@
 # Base image
-FROM php:8.2.1-fpm
+FROM php:8.2.13-fpm
 
 # Maintainer
 LABEL maintainer="nilosoares@gmail.com"
@@ -32,11 +32,11 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
 # Installs PECL Extensions
 RUN pecl install ds && \
     pecl install redis && \
-    pecl install xdebug-3.2.0 && \
+    pecl install xdebug-3.2.2 && \
     docker-php-ext-enable redis xdebug
 
 # Installs Composer
-RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/b5dbe5ebdec95ce71b3128b359bd5a85cb0a722d/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
+RUN wget https://raw.githubusercontent.com/composer/getcomposer.org/a19025d6c0a1ff9fc1fac341128b2823193be462/web/installer -O - -q | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Create folders and fix permissions
 RUN mkdir -p /var/www/.composer && \
